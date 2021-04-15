@@ -1,0 +1,31 @@
+
+body,
+html {
+  background: rgb(76, 129, 129);
+}
+.endScreenLoose{
+  display: block;
+  margin: 100px auto;
+}
+canvas {
+  display: block;
+  margin: 100px auto;
+}
+
+.button {
+  position: fixed;
+  z-index: 1;
+}
+.labyrinthe {
+  position: fixed;
+  z-index: 2;
+}
+/* div#fps {
+  position: absolute;
+  top:25px;
+  right:25px;
+  background-color:#ccc;
+  box-shadow: 1px 1px 1px #333;
+  width:80px;
+  padding:5px;
+} */
