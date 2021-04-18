@@ -12,9 +12,13 @@
 <!-- partial -->
 
   <script src='https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.min.js'></script>
-  <h1>Votre score est : <span id="score"></span></h1>
-  <h2>Timer : <span id="timerel"></span></h2>
-  <h3>highscore : <span id="highscore"><%= highscore.score %> par <%= highscore.username %>  </span></h3>
+  <div id = "info">
+    <h1>Votre score est : <span id="score"></span></h1>
+    <h2>Timer : <span id="timerel"></span></h2>
+    <h3>highscore : <span id="highscore"><%= highscore.score %> par <%= highscore.username %>  </span></h3>
+  </div>
+
+ 
   <div id="fps">FPS</div>
   
   <script>
@@ -31,6 +35,7 @@ function getRandomInt(max) {
 var labyrintheSortieX = getRandomInt(13);
 var labyrintheSortieY = getRandomInt(13);
 var NBanimation = 0, nbFPS = 10;
+var keydown = null;
 var labyrinthe = [
   ["k", "f", "f", "b", "b", "o", "k", "o", "n", "k", "f", "f", "b", "o"],
   ["e", "f", "o", "g", "j", "b", "d", "o", "g", "g", "m", "h", "g", "n"],
@@ -262,43 +267,53 @@ function Peon() {
   };
 
   this.detection = function() {
-    var infiniti = 800;
-    // haut
+    document.onkeydown = checkKey;
+    function checkKey(e) {
+
+      e = e || window.event;
+
+      keydown = e.keyCode
+    }
+    
+  
+
     if (
-      mouseX > this.x + offset &&
-      mouseX < this.x + caseTaille + offset &&
-      mouseY < this.y + offset &&
-      mouseY > this.y - infiniti + offset
+      keydown == 38
     )
  {
+   //console.log(document.onkeydown)
+   //console.log("move 0")
       this.move(0);
+      if (this.detectWall == true){
+      keydown = null;
+     }
     }
     // droite
     if (
-      mouseX > this.x + caseTaille + offset &&
-      mouseX < this.x + caseTaille + infiniti + offset &&
-      mouseY > this.y + offset &&
-      mouseY < this.y + caseTaille + offset
+       keydown == 39
     ) {
       this.move(1);
+      if (this.detectWall == true){
+      keydown = null;
+     }
     }
     // bas
     if (
-      mouseX > this.x + offset &&
-      mouseX < this.x + caseTaille + offset &&
-      mouseY > this.y + caseTaille + offset &&
-      mouseY < this.y + caseTaille + infiniti + offset
-    ) {
+       keydown == 40
+    )  {
       this.move(2);
+      if (this.detectWall == true){
+      keydown = null;
+     }
     }
     // gauche
     if (
-      mouseX < this.x + offset &&
-      mouseX > this.x - infiniti + offset &&
-      mouseY > this.y + offset &&
-      mouseY < this.y + caseTaille + offset
+       keydown == 37
     ) {
       this.move(3);
+     if (this.detectWall == true){
+      keydown = null;
+     }
     }
   };
 

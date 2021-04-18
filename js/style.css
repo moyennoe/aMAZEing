@@ -2,6 +2,7 @@
 body,
 html {
   background: rgb(76, 129, 129);
+  overflow: hidden;
 }
 .endScreenLoose{
   display: block;
@@ -11,7 +12,11 @@ canvas {
   display: block;
   margin: 100px auto;
 }
-
+#info {
+  position: absolute;
+  top: 50px; 
+  left: 50px;
+}
 .button {
   position: fixed;
   z-index: 1;
