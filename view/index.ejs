@@ -23,7 +23,7 @@
   
   <script>
   
-  var caseTaille = 50;
+  var caseTaille = 60;
   var offset = 40;
   var bob = new Peon();
   var step = 2;
@@ -74,7 +74,7 @@ var correspondance = {
 };
 
 function setup() {
-  createCanvas(800, 800);
+  createCanvas(900, 900);
 }
 
 function draw() {
@@ -229,8 +229,8 @@ function Peon() {
   this.caseX = 0;
   this.caseY = 0;
   this.direction = 1;
-  this.w = 20;
-  this.vel = 2;
+  this.w = 30;
+  this.vel = 3;
   this.etat = "static";
   this.pixelParcouru = 0;
 
@@ -281,8 +281,7 @@ function Peon() {
       keydown == 38
     )
  {
-   //console.log(document.onkeydown)
-   //console.log("move 0")
+   
       this.move(0);
       if (this.detectWall == true){
       keydown = null;
@@ -373,12 +372,12 @@ function Peon() {
   };
 
 
-  var counter = 31;
+  var counter = 30;
   counter = counter -1;
   setInterval(timer,1000);
   var score = 0;
   function timer() {
-  if (counter === 0) {
+  if (counter <= 0) {
     stopTimer();
     console.log("stopTimer executé");
     
@@ -424,7 +423,7 @@ function Peon() {
   this.grandSucces = function() {
     square ++;
     score = square*10;
-    counter += 5;
+    counter += 4;
     labyrintheSortieX = getRandomInt(14);
     labyrintheSortieY = getRandomInt(13);
     document.getElementById("score").innerHTML = score;
